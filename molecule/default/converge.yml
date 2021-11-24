@@ -5,19 +5,7 @@
   gather_facts: yes
   #vars_files:
   #  - ../../defaults/main.yml
-  vars:
-    delete_puppet_ssl_dir: false
-    apt_purge: false
-    yum_purge: false
-    run_puppet_agent: false
-    fix_hosts: false
-    offline_rpmfile: false
-    offline_ubuntu_debfile: false
-    offline_debain_debfile: false
-    online_rpmfile: true
-    online_ubuntu_debfile: true
-    online_debian_debfile: true
-    fix_apt_missing: false
+  #vars:
 
 
   tasks:

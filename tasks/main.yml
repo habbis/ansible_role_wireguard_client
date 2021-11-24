@@ -2,18 +2,13 @@
 # tasks
 - name: install package rhel
   yum:
-    name: vim
+    name: vi
     state: present
-  when: (ansible_os_family == "RedHat" and ansible_pkg_mgr == "yum")
+  when: (ansible_pkg_mgr == "yum")
 
-- name: install package ubuntu
+- name: install package ubuntu/debian
   apt:
-    name: vim
+    name: vi
     state: present
-  when: (ansible_os_family == "Ubuntu")
+  when: (ansible_pkg_mgr == "apt")
 
-- name: install package debian
-  apt:
-    name: vim
-    state: present
-  when: (ansible_os_family == "Debian")
