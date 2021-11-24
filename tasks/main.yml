@@ -1,13 +1,9 @@
 ---
 # tasks
-- name: install package rhel
-  yum:
-    name: curl
-    state: present
-  when: (ansible_pkg_mgr == "yum")
-
-- name: install package ubuntu/debian
-  apt:
-    name: curl
-    state: present
-  when: (ansible_pkg_mgr == "apt")
+- name: Touch
+  ansible.builtin.file:
+    path: /etc/foo.conf
+    state: touch
+    mode: u+rw,g-wx,o-rwx
+    modification_time: preserve
+    access_time: preserve
