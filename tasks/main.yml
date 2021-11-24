@@ -2,18 +2,18 @@
 # tasks
 - name: install package rhel
   yum:
-    name: openssh-server
+    name: vim
     state: present
   when: (ansible_os_family == "RedHat" and ansible_pkg_mgr == "yum")
 
 - name: install package ubuntu
   apt:
-    name: openssh-server
+    name: vim
     state: present
-  when: (ansible_os_family == "Ubuntu" and ansible_pkg_mgr == "apt")
+  when: (ansible_os_family == "Ubuntu")
 
 - name: install package debian
   apt:
-    name: openssh-server
+    name: vim
     state: present
-  when: (ansible_os_family == "Debian" and ansible_pkg_mgr == "apt")
+  when: (ansible_os_family == "Debian")

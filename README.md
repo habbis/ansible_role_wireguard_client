@@ -25,6 +25,8 @@ Github-action molecule is under.
 .github/workflows/ci.yml
 
 ```
+In the github action file ci.yml you
+can set diffrent linux distros under test matrix.
 
 To install molecule locally with docker driver.
 
@@ -95,6 +97,23 @@ scenario:
     - destroy
 ```
 
+To test on your machine with molecule since the driver is docker 
+that need to be installed.
+
+Run the molecule test.
+
+```
+molecule test
+```
+
+To just run the playbook to see if you have any problems.
+
+```
+molecule converge
+```
+
+See [molecule doc](https://molecule.readthedocs.io/en/latest/getting-started.html) for more info.
+
 
 
 
@@ -123,5 +142,5 @@ Example site.yml
     #-  defaults/secrets.yml
 
   roles:
-    - { role: ../setup_puppet_agent }
+    - { role: ../ansible_molecule_template }
 ```
