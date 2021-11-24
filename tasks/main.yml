@@ -2,12 +2,12 @@
 # tasks
 - name: install package rhel
   yum:
-    name: vi
+    name: curl
     state: present
   when: (ansible_pkg_mgr == "yum")
 
 - name: install package ubuntu/debian
   apt:
-    name: vi
+    name: curl
     state: present
   when: (ansible_pkg_mgr == "apt")
