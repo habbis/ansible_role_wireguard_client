@@ -28,6 +28,28 @@ Github-action molecule is under.
 In the github action file ci.yml you
 can set diffrent linux distros under test matrix.
 
+There is also setup yamllint with github-action.
+
+Here you can also exclude files.
+
+```
+---
+extends: default
+
+rules:
+  line-length:
+    max: 200
+    level: warning
+
+ignore: |
+  .github/stale.yml
+  .travis.yml
+  site.yml
+
+```
+
+There is also .ansible-lint file for linting ansible.
+
 To install molecule locally with docker driver.
 
 ```
@@ -113,8 +135,6 @@ molecule converge
 ```
 
 See [molecule doc](https://molecule.readthedocs.io/en/latest/getting-started.html) for more info.
-
-
 
 
 To change role name in all files in the folder.
