@@ -2,6 +2,9 @@ ansible_molecule_template
 =========
 
 
+[![CI)(https://github.com/habbis/ansible_molecule_template/workflows/CI/badge.svg)](https://github.com/habbis/ansible_molecule_template/actions?query=workflow%3ACI)
+
+
 My template role for ansible.
 
 This role have github-action molecule to test playbook.
