@@ -147,6 +147,12 @@ find . -type f -print0 | xargs -0 sed -i "s/ansible_molecule_template/new_role/g
 
 ```
 
+And for macos since apple is special.
+
+```
+find . -type f -print0 | LC_ALL=C  xargs -0  sed -i "" 's/setup_puppet_agent/ansible_role_puppet_agent/g'
+```
+
 Example site.yml
 
 ```
