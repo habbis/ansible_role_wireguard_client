@@ -84,8 +84,9 @@ just like a site.yml file.
         name: "ansible_molecule_template"
 ```
 
-molecule.yml is the central configuration file for the testing and
-here you can choose what docker image it will use for testing.
+molecule.yml is the central configuration file for testing ansible playbooks.
+Here you can choose what docker image it will use for testing. The line test_sequence here 
+you choose testing scenario.
 
 ```
 dependency:
