@@ -9,7 +9,7 @@ My template role for ansible.
 
 This role have github-action molecule to test playbook.
 
-I am also using stabel issue bot with this repo.
+Also using stabel issue bot with this repo.
 
 Its under here
 
@@ -20,7 +20,7 @@ Its under here
 
 see Jeff Geerling blog post about it.
 
-[Enabling a stale issue bot on my GitHub repositories](https://www.jeffgeerling.com/blog/2020/enabling-stale-issue-bot-on-my-github-repositories)
+[Enabling a stale issue bot on GitHub repositories](https://www.jeffgeerling.com/blog/2020/enabling-stale-issue-bot-on-my-github-repositories)
 
 Github-action molecule is under.
 
@@ -28,6 +28,8 @@ Github-action molecule is under.
 .github/workflows/ci.yml
 
 ```
+Github action is a automation tools.
+
 In the github action file ci.yml you
 can set diffrent linux distros under test matrix.
 
