@@ -2,7 +2,7 @@ ansible_role_wireguard_server_server
 =========
 
 
-[![CI](https://github.com/habbis/ansible_role_wireguard_server_server_server/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_wireguard_server_server_server/actions?query=workflow%3ACI)
+[![CI](https://github.com/habbis/ansible_role_wireguard_server/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_wireguard_server/actions?query=workflow%3ACI)
 
 This role setup wireguard server on a linux machine.
 
