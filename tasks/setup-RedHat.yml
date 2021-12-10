@@ -27,7 +27,7 @@
 
 - name: enable repo rhel
   command: subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
-  when: ( rhel_wireguard_dkms )
+  when: ( rhel_wg_dkms )
   ignore_errors: yes
 
 - name: enable copr wireguard
