@@ -18,9 +18,6 @@
 - name: generate publick key
   shell: cd /etc/wireguard/ ; cat privatekey | wg pubkey > publickey
 
-- debug:
-    var: wg_privatekey.stdout
-
 - name: setup wireguard config file
   ansible.builtin.template:
     src: templates/wg0_internet.conf.j2
