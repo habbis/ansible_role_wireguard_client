@@ -9,9 +9,9 @@
 
 
   tasks:
-    - name: "Include ansible_role_wireguard"
+    - name: "Include ansible_role_wireguard_server_server"
       include_role:
-        name: "ansible_role_wireguard"
+        name: "ansible_role_wireguard_server_server"
 
   #roles:
-    #- role: habbis.ansible_role_wireguard
+    #- role: habbis.ansible_role_wireguard_server_server

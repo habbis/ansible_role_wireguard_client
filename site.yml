@@ -13,4 +13,4 @@
     #-  defaults/secrets.yml
 
   roles:
-    - { role: ../ansible_role_wireguard }
+    - { role: ../ansible_role_wireguard_server_server }
