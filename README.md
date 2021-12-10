@@ -1,8 +1,8 @@
-ansible_role_client
+ansible_role_wireguard_client
 =========
 
 
-[![CI](https://github.com/habbis/ansible_role_client/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_client/actions?query=workflow%3ACI)
+[![CI](https://github.com/habbis/ansible_role_wireguard_client/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_wireguard_client/actions?query=workflow%3ACI)
 
 This role setup wireguard client on a linux machine.
 
@@ -50,5 +50,5 @@ Example site.yml
     #-  defaults/secrets.yml
 
   roles:
-    - { role: ../ansible_role_client_server }
+    - { role: ../ansible_role_wireguard_client_server }
 ```
