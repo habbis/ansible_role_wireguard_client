@@ -1,0 +1,13 @@
+[Interface]
+PrivateKey = {{ wg_privatekey.stdout }}
+Address = {{ wg_internal_network }}
+ListenPort = {{ wg_port }}
+
+
+# IP forwarding
+# To allow clients connected to your Wireguard server to connect to your LAN (and the Internet).
+PreUp = sysctl -w net.ipv4.ip_forward=1
+
+#replace eth0 with the interface open to the internet (e.g might be wlan0 if wifi)
+PostUp = iptables -A FORWARD -i %i -j ACCEPT; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o {{ interface }} -j MASQUERADE
+PostDown = iptables -D FORWARD -i %i -j ACCEPT; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o {{ interface }} -j MASQUERADE

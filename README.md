@@ -1,159 +1,32 @@
-ansible_molecule_template
+ansible_role_wireguard
 =========
 
 
-[![CI](https://github.com/habbis/ansible_molecule_template/workflows/CI/badge.svg)](https://github.com/habbis/ansible_molecule_template/actions?query=workflow%3ACI)
+[![CI](https://github.com/habbis/ansible_role_wireguard/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_wireguard/actions?query=workflow%3ACI)
 
+This role setup wireguard server on a linux machine.
 
-My template role for ansible.
+It will create a wireguard server for so you can access your network and
+the services you host. 
 
-This role have github-action molecule to test playbook.
-
-Also using stabel issue bot with this repo.
-
-Its under here
+Example client config 
 
 ```
- .github/stale.yml
+[Interface]
+PrivateKey = your-client-privatekey
+# the client wireguard ip address you want to give it.
+Address = 11.46.1.1/32
+# you can supply dns server to client
+DNS = yourdns, yourdns
 
-```
+[Peer]
+PublicKey = server-public-key
+# if set 0.0.0.0/0 the your client will send all network traffic
+# via the wireguard server.
+AllowedIPs = 0.0.0.0/0
+Endpoint = your-wireguard-server-ip:51820
+PersistentKeepalive = 21
 
-see Jeff Geerling blog post about it.
-
-[Enabling a stale issue bot on GitHub repositories](https://www.jeffgeerling.com/blog/2020/enabling-stale-issue-bot-on-my-github-repositories)
-
-Github-action molecule is under.
-
-```
-.github/workflows/ci.yml
-
-```
-Github action is a automation tools.
-
-In the github action file ci.yml you
-can set diffrent linux distros under test matrix.
-
-There is also setup yamllint with github-action.
-
-Here you can also exclude files.
-
-```
----
-extends: default
-
-rules:
-  line-length:
-    max: 200
-    level: warning
-
-ignore: |
-  .github/stale.yml
-  .travis.yml
-  site.yml
-
-```
-
-There is also .ansible-lint file for linting ansible.
-
-To install molecule locally with docker driver.
-
-```
-pip3  install --user molecule[docker]
-
-```
-
-Molecule settings are under molecule/default/
-there you have the files converge.yml, molecule.yml .
-
-converge.yml here you call the role so molecule can run it 
-just like a site.yml file.
-
-```
-- name: Converge
-  hosts: all
-  become: true
-  gather_facts: yes
-  # import a variable file
-  #vars_files:
-  #  - ../../defaults/main.yml
-  # variables
-  #vars:
-
-
-  tasks:
-    - name: "Include ansible_molecule_template"
-      include_role:
-        name: "ansible_molecule_template"
-```
-
-molecule.yml is the central configuration file for testing ansible playbooks.
-Here you can choose what docker image it will use for testing. The line test_sequence here 
-you choose testing scenario.
-
-```
-dependency:
-  name: galaxy
-driver:
-  name: docker
-platforms:
-  - name: instance
-    # image is for jeff gerling
-    image: "geerlingguy/docker-${MOLECULE_DISTRO:-centos7}-ansible:latest"
-    command: ${MOLECULE_DOCKER_COMMAND:-""}
-    volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-    privileged: true
-    pre_build_image: true
-provisioner:
-  name: ansible
-  playbooks:
-    converge: ${MOLECULE_PLAYBOOK:-converge.yml}
-scenario:
-  # comment out what you dont need for testing
-  test_sequence:
-    - lint
-    - destroy
-    - dependency
-    - syntax
-    - create
-    - prepare
-    - converge
-    - idempotence
-    - check
-    - side_effect
-    - verify
-    - destroy
-```
-
-To test on your machine with molecule since the driver is docker 
-that need to be installed.
-
-Run the molecule test.
-
-```
-molecule test
-```
-
-To just run the playbook to see if you have any problems.
-
-```
-molecule converge
-```
-
-See [molecule doc](https://molecule.readthedocs.io/en/latest/getting-started.html) for more info.
-
-
-To change role name in all files in the folder.
-
-```
-find . -type f -print0 | xargs -0 sed -i "s/ansible_molecule_template/new_role/g"
-
-```
-
-And for macos since apple is special.
-
-```
-find . -type f -print0 | LC_ALL=C  xargs -0  sed -i "" 's/ansible_molecule_template/new_role/g'
 ```
 
 Example site.yml
@@ -174,5 +47,5 @@ Example site.yml
     #-  defaults/secrets.yml
 
   roles:
-    - { role: ../ansible_molecule_template }
+    - { role: ../ansible_role_wireguard }
 ```

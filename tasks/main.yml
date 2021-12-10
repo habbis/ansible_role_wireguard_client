@@ -1,9 +1,43 @@
 ---
-# tasks
-- name: Touch
-  ansible.builtin.file:
-    path: /etc/foo.conf
-    state: touch
-    mode: u+rw,g-wx,o-rwx
-    modification_time: preserve
-    access_time: preserve
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- include_tasks: setup-Ubuntu.yml
+  when: ansible_os_family == 'Ubuntu'
+
+- name: This makes sure credentials don't leak in a race condition.
+  shell: cd /etc/wireguard/ ; umask 077
+
+- name: generate private key
+  shell: cd /etc/wireguard/ ; wg genkey | tee privatekey
+  register: wg_privatekey
+
+- name: generate publick key
+  shell: cd /etc/wireguard/ ; cat privatekey | wg pubkey > publickey
+
+- debug:
+    var: wg_privatekey.stdout
+
+- name: setup wireguard config file
+  ansible.builtin.template:
+    src: templates/wg0_internet.conf.j2
+    dest: /etc/wireguard/wg0.conf
+    owner: root
+    group: root
+    mode: '0600'
+  when: wg_internet_access
+
+- name: Enable "{{ service }}"
+  ansible.builtin.service:
+    name: "{{ service }}"
+    enabled: yes
+  ignore_errors: yes
+
+- name: Enable "{{ service }}"
+  ansible.builtin.service:
+    name: "{{ service }}"
+    state: started
+  ignore_errors: yes

@@ -13,4 +13,4 @@
     #-  defaults/secrets.yml
 
   roles:
-    - { role: ../ansible_molecule_template }
+    - { role: ../ansible_role_wireguard }

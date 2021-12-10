@@ -9,9 +9,9 @@
 
 
   tasks:
-    - name: "Include ansible_molecule_template"
+    - name: "Include ansible_role_wireguard"
       include_role:
-        name: "ansible_molecule_template"
+        name: "ansible_role_wireguard"
 
   #roles:
-    #- role: habbis.ansible_molecule_template
+    #- role: habbis.ansible_role_wireguard

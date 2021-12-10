@@ -1,2 +1,18 @@
 ---
 # variables
+# enable if you want wireguard dkms
+rhel_wireguard_dkms: false
+# enable by default
+rhel_wireguard_elrepo: true
+# this is enabled by default this config
+# enable wireguard to have internet access
+# use case if vpn to access your lan
+wg_internet_access: true
+# wiregaurd internal network
+wg_internal_network: 10.77.1.0/24
+# wireguard port
+wg_port: 51820
+# the network card to use
+interface: eth1
+# wireguard servie
+service: wg-quick@wg0

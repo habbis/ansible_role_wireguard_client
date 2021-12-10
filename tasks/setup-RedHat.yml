@@ -1,0 +1,29 @@
+- name: Install install epl
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    state: present
+
+- name: Install install elrepo
+  yum:
+    name: https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+    state: present
+  when: ( rhel_wireguard_elrepo )
+
+- name: install elrepo pre-built wireguard
+  yum:
+    name: install kmod-wireguard wireguard-tools
+  when: ( rhel_wireguard_elrepo )
+
+- name: enable repo rhel
+  command: subscription-manager repos --enable codeready-builder-for-rhel-8-$(arch)-rpms
+  when: ( rhel_wireguard_dkms )
+  ignore_errors: yes
+
+- name: enable copr wireguard
+  command: yum copr enable jdoss/wireguard
+  when: ( rhel_wireguard_dkms )
+
+- name: install elrepo pre-built wireguard
+  yum:
+    name: install kmod-wireguard wireguard-tools
+  when: ( rhel_wireguard_dkms )
