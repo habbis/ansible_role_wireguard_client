@@ -13,6 +13,8 @@ wg_internal_ip: 11.77.1.2/32
 # dns server to use
 nameserver1: 1.1.1.1
 nameserver2: 8.8.8.8
+# wireguard server
+wg_server: yourserver.net
 # allowed ip
 # by default 0.0.0.0/0
 allowed_ip: 0.0.0.0/0
