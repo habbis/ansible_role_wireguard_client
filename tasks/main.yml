@@ -20,7 +20,7 @@
 
 - name: setup wireguard config file
   ansible.builtin.template:
-    src: templates/wg0_internet.conf.j2
+    src: templates/wg0_client.conf.j2
     dest: /etc/wireguard/wg0.conf
     owner: root
     group: root

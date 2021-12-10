@@ -1,13 +1,16 @@
-ansible_role_wireguard_server
+ansible_role_client
 =========
 
 
-[![CI](https://github.com/habbis/ansible_role_wireguard_server/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_wireguard_server/actions?query=workflow%3ACI)
+[![CI](https://github.com/habbis/ansible_role_client/workflows/CI/badge.svg)](https://github.com/habbis/ansible_role_client/actions?query=workflow%3ACI)
 
-This role setup wireguard server on a linux machine.
+This role setup wireguard client on a linux machine.
 
-It will create a wireguard server for so you can access your network and
-the services you host. 
+FYI wireguard dont really have client its calle peers since i am going to make 
+a playbook to manage peer on a wireguard server it better to call this clients.
+
+It will create a wireguard client for so you can access your network via your
+server. 
 
 Example client config 
 
@@ -47,5 +50,5 @@ Example site.yml
     #-  defaults/secrets.yml
 
   roles:
-    - { role: ../ansible_role_wireguard_server_server }
+    - { role: ../ansible_role_client_server }
 ```

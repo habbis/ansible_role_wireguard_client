@@ -9,10 +9,11 @@ rhel_wg_elrepo: true
 # use case if vpn to access your lan
 wg_internet_access: true
 # wiregaurd internal network
-wg_internal_network: 11.77.1.0/24
+wg_internal_ip: 11.77.1.2/32
+# dns server to use 
+nameserver1: 1.1.1.1
+nameserver2: 8.8.8.8
 # wireguard port
-wg_port: 51820
-# the network card to use
-interface: eth1
+wg_server_port: 51820
 # wireguard servie
 service: wg-quick@wg0
