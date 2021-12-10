@@ -5,6 +5,6 @@ DNS = "{{ nameserver1 }}, {{ nameserver2 }}"
 
 [Peer]
 PublicKey = server-public-key
-AllowedIPs = "{{ allowed_ip }}"
-Endpoint = "{{ wg_server }}:{{ wg_server_port }}
+AllowedIPs = {{ allowed_ip }}
+Endpoint = {{ wg_server }}:{{ wg_server_port }}
 PersistentKeepalive = 21
