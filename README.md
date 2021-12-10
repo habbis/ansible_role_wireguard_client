@@ -1,4 +1,4 @@
-ansible_role_wireguard_server_server
+ansible_role_wireguard_server
 =========
 
 
