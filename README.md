@@ -6,7 +6,7 @@ ansible_role_wireguard_client
 
 This role setup wireguard client on a linux machine.
 
-FYI wireguard dont really have client its calle peers since i am going to make 
+FYI wireguard dont really have client its called peers since i am going to make 
 a playbook to manage peer on a wireguard server it better to call this clients.
 
 It will create a wireguard client for so you can access your network via your
